@@ -1,0 +1,127 @@
+Wed Feb 20 14:06:19 PST 2008  cygnus@janrain.com
+  tagged 2.0.1
+
+Wed Feb 20 13:39:56 PST 2008  cygnus@janrain.com
+  * Remove "warning" text from output of store tests
+
+Tue Feb 19 15:46:01 PST 2008  cygnus@janrain.com
+  * Use PATH_SEPARATOR in detect.php (thanks: http://jeroen.hellingman.myopenid.com/)
+
+Tue Feb 19 15:43:26 PST 2008  cygnus@janrain.com
+  * Add conditional check for CURLOPT_NOSIGNAL (thanks: http://ols2000.myopenid.com/)
+
+Thu Feb  7 13:40:00 PST 2008  cygnus@janrain.com
+  * Skip HMAC-SHA256 test if not supported
+
+Thu Feb  7 13:22:11 PST 2008  cygnus@janrain.com
+  * Remove stale getAssocArgs
+
+Thu Feb  7 13:19:08 PST 2008  cygnus@janrain.com
+  * Add HMAC-SHA256 to plaintext consumer session assoc types
+
+Mon Feb  4 12:09:01 PST 2008  cygnus@janrain.com
+  * Generalize Auth_OpenID_Association::sign()
+
+Mon Feb  4 11:57:23 PST 2008  cygnus@janrain.com
+  * Enable (HMAC)SHA256 tests; why did we disable them?
+
+Fri Feb  1 22:53:07 PST 2008  harningt@gmail.com
+  * hmac-sha256-test
+
+Fri Feb  1 22:34:43 PST 2008  harningt@gmail.com
+  * support-hmacsha256
+
+Sat Feb  2 10:35:03 PST 2008  me@arty.name
+  * Failed DB connection is not a fail of test, typo in PG storage test
+
+Mon Feb  4 10:05:59 PST 2008  cygnus@janrain.com
+  * Fix user XRDS
+
+Mon Feb  4 09:53:39 PST 2008  cygnus@janrain.com
+  * Fix IDP XRDS in example server: advertise correct type
+
+Mon Jan 28 21:43:57 PST 2008  cygnus@janrain.com
+  * Fix reference-passing style for PHP 5
+
+Wed Jan 23 20:12:53 PST 2008  joel@pbwiki.com
+  * ParanoidHTTPFetcher.php (supportsSSL): Updated to work under PHP 4.
+  The official documentation lies, curl_version() returns an array in PHP 5 and a string in PHP 4.
+
+Wed Jan 16 10:42:39 PST 2008  cygnus@janrain.com
+  * Auth_OpenID_AX_FetchResponse::getExtensionArgs takes request by value, defaults to null
+
+Wed Jan 16 09:44:48 PST 2008  sam.alexander@vidoop.com
+  * Fixing documentation
+
+Wed Jan  2 16:08:27 PST 2008  cygnus@janrain.com
+  * Refactored HTML-parsing code to avoid PCRE limits on large matches
+
+Mon Dec 31 11:18:41 PST 2007  cygnus@janrain.com
+  * Remove PHP5ism (stripos())
+
+Mon Dec 31 10:42:07 PST 2007  cygnus@janrain.com
+  * Store test: remove correct sqlite database file
+
+Sat Dec 29 17:50:02 PST 2007  Trevor Johns <trevor@tjohns.net>
+  * Fixed discovery failure due to case-sensitive comparison of 'Location:' header
+  
+  If an HTTP redirect was issued during discovery with a 'Location:' header that
+  doesn't exactly match case (such as 'location:' or 'LOCATION:'), discovery
+  would fail. This is incorrect behavior per RFC 2616, Section 4.2.
+  
+  This behavior is corrected by using a case insensitive compare when checking
+  for HTTP redirects.
+
+Sat Dec 29 14:38:13 PST 2007  Trevor Johns <trevor@tjohns.net>
+  * Removed unused $http_response from Auth_Yadis_Manager
+
+Sat Dec 29 13:48:29 PST 2007  Trevor Johns <trevor@tjohns.net>
+  * Fixed typo and minor formatting changes for StoreTest.
+  
+  - Removed extra newline.
+  - Changed comment in test_sqlitestore() to read 'sqlite' instead of
+    'postgres'.
+
+Sat Dec 29 00:41:13 PST 2007  Trevor Johns <trevor@tjohns.net>
+  * Fixed StoreTest to not fail on Mac OS X 10.5
+  
+  Mac OS X 10.5 generates a value for $TMPDIR that looks something like
+  this:
+  
+      /var/folders/uU/uXMNhbRIGkOhaxcg60xSGU+++TI/-Tmp-/
+  
+  The '+++' is causing the DSN in Tests_Auth_OpenID_StoreTest::test_sqlitestore
+  to become invalid. This invalid DSN causes the SQLite driver to attempt
+  creating a file at a nonexistant path, resulting in a failed test. This is
+  fixed by wrapping the value of $TMPDIR received by the system in a call to
+  urlencode().
+
+Sat Dec 29 00:17:29 PST 2007  Trevor Johns <trevor@tjohns.net>
+  * Update admin scripts to run under Mac OS X
+  
+  The scripts in admin use several non-POSIX arguments which do not work on Mac
+  OS X. See my original post to dev@openidenabled.com:
+  
+      message://%3C5902A542-C723-4F0A-8478-1F33C874D1B8@tjohns.net%3E
+      
+      http://lists.openidenabled.com/pipermail/dev/2007-December/000979.html
+  
+  This patch makes the following changes to fix this:
+  
+    - Changed $HERE in admin/runtests to avoid calling readlink.
+    - Calls to xargs now use '-L 1' instead of '-l1'.
+    - Calls to 'wc -L' were eliminated.
+
+Thu Dec 20 14:29:57 PST 2007  sam.alexander@vidoop.com
+  * Typo in SReg docblock
+
+Sat Dec  8 15:40:37 PST 2007  dAniel hAhler <php-openid@thequod.de>
+  * use-time-instead-of-(gm)mktime
+  Use time() instead of (gm)mktime(), when used for getting the current
+  time (called without arguments).
+  According to "hunk ./Auth/OpenID/Nonce.php 99" gmmktime() for PHP4 is
+  buggy and using mktime() makes no sense when called without args:
+  just use time() then directly.
+
+Wed Dec  5 13:55:15 PST 2007  cygnus@janrain.com
+  tagged 2.0.0

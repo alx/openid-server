@@ -1,0 +1,191 @@
+
+a, a:visited {
+    color: blue;
+}
+
+pre {
+    background: #eee;
+    border: 1px solid #777;
+    padding: 7px;
+}
+
+table th {
+    text-align: left;
+}
+
+html\:abbr, abbr {
+    cursor: default;
+    border-bottom: 1px dotted black;
+}
+
+span.anything {
+    font-style: italic;
+    color: red;
+}
+
+div.errors {
+    background: #f77;
+    border: 1px outset #333;
+    padding: 5px;
+    margin: 4px;
+}
+
+div.errors span.error {
+    display: block;
+}
+
+div.messages {
+    background: #8f8;
+    border: 1px outset #333;
+    padding: 5px;
+    margin: 4px;
+}
+
+div.messages span.message {
+    display: block;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+div.header {
+    background: #eee;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #666;
+}
+
+div.header h2 {
+    margin: 0;
+    padding: 10px;
+}
+
+div.page {
+    width: 8.5in;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    text-align: left;
+}
+
+div.body {
+    margin: 8px;
+}
+
+div.login {
+}
+
+table.login {
+    margin: auto;
+}
+
+div.nav {
+    margin: 0;
+    padding: 0;
+    background: #ddd;
+    border-bottom: 1px solid #666;
+}
+
+div.nav ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+div.nav ul li {
+    display: inline;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+div.nav ul li.right {
+    float: right;
+}
+
+div.nav ul li.nohover:hover {
+    background: inherit;
+}
+
+div.nav ul li:hover {
+    background: white;
+}
+
+div.nav ul li a {
+    text-decoration: none;
+}
+
+div.footer {
+    border-top: 1px solid #888;
+    text-align: center;
+    padding-top: 7px;
+    font-size: 80%;
+    color: #888;
+}
+
+div.footer a {
+    color: #88f;
+}
+
+p.justified {
+    text-align: justify;
+}
+
+form.inline {
+    display: inline;
+    margin: auto;
+}
+
+img.captcha {
+    border: 1px solid black;
+}
+
+div.nav span.openid {
+    font-style: italic;
+}
+
+input.disabled_bold:disabled {
+    color: black;
+}
+
+table.sites {
+    border-collapse: collapse;
+}
+
+table.sites td {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+div.sreg {
+    border: 1px solid #666;
+    background: #f7f7f7;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+span.required {
+    color: red;
+}
+
+span.optional {
+    color: green;
+}
+
+div.sreg table {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+span.trusted {
+    color: green;
+}
+
+span.untrusted {
+    color: red;
+}

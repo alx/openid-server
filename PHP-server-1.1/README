@@ -1,0 +1,133 @@
+
+PHP OpenID Server by JanRain, Inc.
+==================================
+
+This application will serve OpenID authentication requests and Simple
+Registration profile data for OpenID.  For more information about
+OpenID and Simple Registration, please see:
+
+  http://www.openid.net/
+  http://www.openidenabled.com/openid/simple-registration-extension/
+
+If you have any questions, concerns, patches, or bug reports, PLEASE
+subscribe to our OpenID development discussion list and let us know!
+You can subscribe to the list here:
+
+  http://lists.openidenabled.com/mailman/listinfo/dev
+
+Features
+--------
+
+This server supports:
+
+ - The OpenID protocol with Yadis discovery
+ - Simple registration OpenID extension
+ - Public and admin-controlled account registration
+
+User OpenIDs take the form
+
+  http://path/to/server/?user=USERNAME
+
+and can be cloaked with mod_rewrite as described in Installation step
+(6) below.  User XRDS documents are served at
+
+  http://path/to/server/?xrds=USERNAME
+
+The server uses MySQL as its storage backend.  If you want to use a
+different backend, please see src/auth.php and src/storage.php for the
+authentication and storage backend APIs.
+
+Installation Requirements
+-------------------------
+
+The PHP OpenID server requires the following:
+
+ 1. A MySQL server, version 4.x or greater.
+
+    http://www.mysql.com/
+
+ 2. PHP MySQL support
+
+ 3. The JanRain, Inc. PHP OpenID library, version 1.1.0 or greater.
+
+    http://www.openidenabled.com/openid/libraries/php
+
+ 4. The Smarty templating system, version 2.6 or later (may work with
+    earlier versions; PLEASE contact us and let us know if it works on
+    yours!)
+
+    http://smarty.php.net/
+
+ 5. PEAR DB (to install, run "pear install db" as root)
+
+ 6. PHP GD extension with FreeType support (this is used to render
+    Captcha images)
+
+Installation
+------------
+
+1. The 'src' directory contains the files to be served, so that
+   directory needs to be symlinked into your web server's document
+   root somewhere.  You can also point a virtualhost at it.  (Copying
+   the 'src' directory will not work.)
+
+2. Create a MySQL database and assign credentials to the database.
+
+   mysql> CREATE DATABASE my_openid_server;
+   mysql> GRANT ALL PRIVILEGES ON my_openid_server.* TO user@host
+          IDENTIFIED BY "password_here";
+   mysql> FLUSH PRIVILEGES;
+
+3. Change the privileges on the templates_c/ directory so it is
+   writable by the web server's account.  This is the location of
+   compiled Smarty templates.
+
+4. Edit src/config.php to configure the server.  Most default settings
+   are probably ok.  The remarks describe the purpose of each setting.
+   Most importantly, enter the credentials obtained in step (2) for
+   the $storage_parameters setting.  If these parameters aren't
+   correct, you'll get these messages when you try to access the site:
+
+     Could not connect to authentication server.
+     Could not connect to OpenID storage server.
+
+   Also, be sure to edit the md5 password hash for the 'admin'
+   administrative account so you can log in to manage accounts if you
+   decide to deactivate public account registration.
+
+Optional Steps
+--------------
+
+5. You'll probably want to customize the templates/main.tpl file to
+   your site's needs.  There is some text in that template that should
+   probably be replaced with something appropriate.
+
+6. Optionally, you may set up Apache mod_rewrite rules to beautify
+   your OpenID URLs.  For example, if your PHP OpenID server is
+   installed at /server/ and you want your OpenIDs to look like
+   http://example.com/user/bob, you can use these directives to set up
+   the appropriate rewrite:
+
+     RewriteEngine on
+     RewriteRule /user/([^/]+)$ /server/?user=$1 [PT]
+
+Troubleshooting
+---------------
+
+Q: I'm using nginx webserver and PHP/fastcgi to run OpenID server.
+   When a user requests a URI like page.php/path?param=value, it
+   doesn't get served by PHP.  What's going on?
+
+A: There's a problem with PATH_INFO when using PHP and FastCGI.  The
+   fix is to set this in your php.ini:
+
+   cgi.fix_pathinfo = 1
+
+Contact Us
+----------
+
+Please do not hesitate to contact us if you want to contribute or
+report bugs.  You can subscribe to our discussion list at
+
+  http://lists.openidenabled.com/mailman/listinfo/dev
+
