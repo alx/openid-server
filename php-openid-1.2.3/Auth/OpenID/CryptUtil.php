@@ -20,7 +20,7 @@ if (!defined('Auth_OpenID_RAND_SOURCE')) {
      * The filename for a source of random bytes. Define this yourself
      * if you have a different source of randomness.
      */
-    define('Auth_OpenID_RAND_SOURCE', '/dev/urandom');
+    define('Auth_OpenID_RAND_SOURCE', null);
 }
 
 class Auth_OpenID_CryptUtil {
