@@ -2,16 +2,19 @@ h1. Configuration
 
 In the package, you need to edit some configuration in _web/config.php_:
 
-@
+<pre>
+<code>
 /**
  * The administrator's email address.  You may leave this empty if you
  * wish.  If empty, the "Contact (email address)" message will not
  * appear on every page footer.
  */
 define('SITE_ADMIN_EMAIL', "admin@example.com");
-@
+</code>
+</pre>
 
-@
+<pre>
+<code>
 /**
  * Set these values for administrative access.  This account will be
  * able to create and remove accounts from the auth backend.  This
@@ -24,11 +27,13 @@ define('SITE_ADMIN_EMAIL', "admin@example.com");
  */
 define('ADMIN_USERNAME', 'admin');
 define('ADMIN_PASSWORD_MD5', '');
-@
+</code>
+</pre>
 
-"Visit this page to transform your password in MD5 hash":http://www.zappersoftware.com/Help/md5.php
+"Visit this page to transform your password in md5 hash":http://www.zappersoftware.com/Help/md5.php
 
-@
+<pre>
+<code>
 /**
  * Storage backend to use.  Currently the only choice is "MYSQL".  See
  * storage.php for storage backend implementations.  Parameters for
@@ -43,11 +48,12 @@ $storage_parameters = array('username' => 'openid',
                             'password' => '',
                             'database' => 'php_openid_server',
                             'hostspec' => 'localhost');
-@
+</code>
+</pre>
 
 There are more options you can change in _config.php_, feel free to experiment :)
 
-h1. Link to HTTP server
+h1. Link to http server
 
 You need to tell to your server to access OpenID server in the ?web? directory.
 Here is how it works on my webhost:
