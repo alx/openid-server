@@ -61,3 +61,9 @@ Here is how it works on my webhost:
 @ln -sf ~/openid/web/ ~/public_html/openid/@
 
 You can now access your open-id server at: http://open-id.yourserver.com
+
+h1. Permissions
+
+You need to write-enable your template directory:
+
+@chmod 766 ~/openid/PHP-server-1.1/templates_c/@
