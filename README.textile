@@ -1,0 +1,57 @@
+h1. Configuration
+
+In the package, you need to edit some configuration in _web/config.php_:
+
+@
+/**
+ * The administrator's email address.  You may leave this empty if you
+ * wish.  If empty, the "Contact (email address)" message will not
+ * appear on every page footer.
+ */
+define('SITE_ADMIN_EMAIL', "admin@example.com");
+@
+
+@
+/**
+ * Set these values for administrative access.  This account will be
+ * able to create and remove accounts from the auth backend.  This
+ * username will not be permitted to use an OpenID.  The password MUST
+ * be an MD5 hexadecimal hash of the password you want to use.
+ * Example:
+ *
+ * define('ADMIN_PASSWORD_MD5', '21232f297a57a5a743894a0e4a801fc3');
+ *
+ */
+define('ADMIN_USERNAME', 'admin');
+define('ADMIN_PASSWORD_MD5', '');
+@
+
+"Visit this page to transform your password in MD5 hash":http://www.zappersoftware.com/Help/md5.php
+
+@
+/**
+ * Storage backend to use.  Currently the only choice is "MYSQL".  See
+ * storage.php for storage backend implementations.  Parameters for
+ * connecting to the storage backend.  See storage.php if you want to
+ * create your own backend.
+ */
+
+define('STORAGE_BACKEND', 'MYSQL');
+global $storage_parameters;
+
+$storage_parameters = array('username' => 'openid',
+                            'password' => '',
+                            'database' => 'php_openid_server',
+                            'hostspec' => 'localhost');
+@
+
+There are more options you can change in _config.php_, feel free to experiment :)
+
+h1. Link to HTTP server
+
+You need to tell to your server to access OpenID server in the ?web? directory.
+Here is how it works on my webhost:
+
+@ln -sf ~/openid/web/ ~/public_html/openid/@
+
+You can now access your open-id server at: http://open-id.yourserver.com
