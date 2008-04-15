@@ -38,7 +38,7 @@ class AuthBackend_MYSQL extends Backend_MYSQL {
         // your new fields.
 
         if (PEAR::isError($result)) {
-            print_r($result);
+            // print_r($result);
             return false;
         } else {
             return true;
