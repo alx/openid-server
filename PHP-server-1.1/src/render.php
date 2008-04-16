@@ -235,7 +235,7 @@ function render_register($method, &$request, &$template)
 
                 Server_setAccount($request['username']);
                 Server_addMessage("Registration successful; welcome, ".$request['username']."!");
-                Server_redirect(getServerURL());
+                Server_redirect(getServerURL()."?action=account");
             } else {
                 $template->addError('Sorry; that username is already taken!');
             }
