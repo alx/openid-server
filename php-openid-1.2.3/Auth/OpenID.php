@@ -97,7 +97,9 @@ define('Auth_OpenID_punct',
        "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
 
 if (Auth_OpenID_getMathLib() === null) {
-    define('Auth_OpenID_NO_MATH_SUPPORT', true);
+    if(!defined('Auth_OpenID_NO_MATH_SUPPORT')){
+		define('Auth_OpenID_NO_MATH_SUPPORT', true);
+	}
 }
 
 /**
